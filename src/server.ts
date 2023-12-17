@@ -1,26 +1,22 @@
-import express from 'express';
+import express from "express";
 import { PrismaClient } from "@prisma/client";
 const port = 3000;
 const app = express();
 const prisma = new PrismaClient();
+import router from "./routes/routes"
 
-app.get('/', (req, res) => {
-  res.send('Bem-vindo ao meu servidor!');
+app.use(express.json());
+
+app.use("/api", router);
+
+app.listen(port, async () => {
+  console.log(`Servidor em execução em http://localhost:${port}`);
+
+  await prisma.$connect();
+  console.log("Conexão com o banco de dados estabelecida");
 });
 
-
-app.get('/api/:nome', (req, res) => {
-  const { nome } = req.params;
-  res.json({ mensagem: `Olá, ${nome}!` });
-});
-
-
-app.post('/api/enviar', (req, res) => {
-  const { mensagem } = req.body;
-  res.json({ mensagemRecebida: mensagem });
-});
-
-
-app.listen(port, () => {
-  console.log(`Servidor está rodando em http://localhost:${port}`);
+process.on("beforeExit", async () => {
+  await prisma.$disconnect();
+  console.log("Conexão com o banco de dados encerrada");
 });

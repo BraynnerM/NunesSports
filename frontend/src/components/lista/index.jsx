@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { getProdutos } from "../../services/requestApi";
-
+import { Link } from "react-router-dom";
 const ListaComponent = () => {
   const [produtos, setProdutos] = useState([]);
 
@@ -17,38 +17,28 @@ const ListaComponent = () => {
     fetchData();
   }, []);
 
-  console.log(produtos);
-
   return (
     <div>
-      <table>
-        <thead>
-          <tr>
-            <th>Código</th>
-            <th>Nome</th>
-            <th>Descrição</th>
-            <th>Preço</th>
-          </tr>
-        </thead>
-        <tbody>
-          {produtos.map(produto =>
-            <tr key={produto.id}>
-              <td>
-                {produto.codigo_do_produto}
-              </td>
-              <td>
-                {produto.nome_do_produto}
-              </td>
-              <td>
-                {produto.descricao_do_produto}
-              </td>
-              <td>
-                R${produto.preco_do_produto}
-              </td>
-            </tr>
-          )}
-        </tbody>
-      </table>
+      <div className="product-cards">
+        {produtos.map(produto =>
+          <Link key={produto.id} to={`/details/${produto.id}`}>
+            <div className="product-card" >
+              <img
+                src={produto.imagem_do_produto}
+                alt={produto.nome_do_produto}
+              />
+              <div>
+                <p>
+                  {produto.nome_do_produto}
+                </p>
+                <p>
+                  R${Number.parseFloat(produto.preco_do_produto).toFixed(2)}
+                </p>
+              </div>
+            </div>
+          </Link>
+        )}
+      </div>
     </div>
   );
 };

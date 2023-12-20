@@ -1,4 +1,5 @@
 import React from "react";
+import './index.css'
 
 const Modal = ({ handleUpdate, onClose, produto, handleChange, handleBlur  }) => {
 

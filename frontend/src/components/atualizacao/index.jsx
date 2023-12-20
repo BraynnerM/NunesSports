@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { getProdutos, updateProduto } from "../../services/requestApi";
 import Modal from "./Modal"; 
+import './index.css'
 
 const AtualizacaoComponent = () => {
   const [produtos, setProdutos] = useState([]);
@@ -35,10 +36,10 @@ const AtualizacaoComponent = () => {
 
     try {
       const produtoAtualizado = await updateProduto(produtoSelecionado.id, produtoSelecionado);
-      console.log("Produto atualizado com sucesso:", produtoAtualizado);
-      
+      window.alert("Produto atualizado com sucesso!", produtoAtualizado);
+      handleCloseModal();
     } catch (error) {
-      console.error("Erro ao atualizar produto:", error);
+      window.alert("Erro ao atualizar produto:", error);
     }
   };
 
@@ -60,12 +61,12 @@ const AtualizacaoComponent = () => {
   };
 
   return (
-    <div>
+    <div className="container-update-products">
       <div className="product-cards">
         {produtos.map((produto) => (
           <div key={produto.id} className="product-card">
-            <img src={produto.imagem_do_produto} alt={produto.nome_do_produto} />
-            <div>
+            <img src='\assets\placeholder.jpeg' alt={produto.nome_do_produto} />
+            <div className="product-card-data">
               <p>{produto.nome_do_produto}</p>
               <p>R${Number.parseFloat(produto.preco_do_produto).toFixed(2)}</p>
             </div>

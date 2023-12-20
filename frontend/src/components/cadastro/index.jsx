@@ -32,7 +32,7 @@ const CadastroComponent = () => {
 
     try {
       const novoProduto = await createProduto(produto);
-      console.log("Produto criado com sucesso:", novoProduto);
+      window.alert("Produto cadastrado com sucesso!", novoProduto);
       setProduto({
         codigo_do_produto: "",
         nome_do_produto: "",
@@ -40,7 +40,7 @@ const CadastroComponent = () => {
         preco_do_produto: ""
       });
     } catch (error) {
-      console.error("Erro ao criar produto:", error);
+      window.alert("Erro ao criar produto:", error);
     }
   };
 

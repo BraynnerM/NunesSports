@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { getProdutos, deleteProduto } from "../../services/requestApi";
+import './index.css'
 
 const ExclusaoComponent = () => {
   const [produtos, setProdutos] = useState([]);
@@ -28,12 +29,12 @@ const ExclusaoComponent = () => {
     }
   }
   return (
-    <div>
+    <div className="container-delete-products">
       <div className="product-cards">
         {produtos.map(produto =>
           <div key={produto.id} className="product-card">
             <img
-              src={produto.imagem_do_produto}
+              src='/assets/placeholder.jpeg'
               alt={produto.nome_do_produto}
             />
             <div>

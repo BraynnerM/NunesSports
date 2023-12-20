@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { getProdutoById } from "../../services/requestApi";
 import { useParams, Link } from "react-router-dom";
+import './index.css'
 const DetalhesComponent = () => {
   const [produto, setProduto] = useState([]);
   const { id } = useParams();
@@ -18,11 +19,11 @@ const DetalhesComponent = () => {
   }, []);
 
   return (
-    <div>
+    <div className="details">
       <div className="container-product-card">
         <div className="product-card-details" key={produto.id}>
-          <img src={produto.imagem_do_produto} alt={produto.nome_do_produto} />
-          <div>
+          <img src='\assets\placeholder.jpeg' alt={produto.nome_do_produto} />
+          <div className="product-card-details-data">
             <p>
               {produto.codigo_do_produto}
             </p>
@@ -36,10 +37,10 @@ const DetalhesComponent = () => {
               R${Number.parseFloat(produto.preco_do_produto).toFixed(2)}
             </p>
           </div>
-        </div>
-        <Link to="/list">
+          <Link to="/list">
           <button>Voltar para a Lista</button>
         </Link>
+        </div>        
       </div>
     </div>
   );

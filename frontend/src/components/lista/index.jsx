@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { getProdutos } from "../../services/requestApi";
 import { Link } from "react-router-dom";
+import './index.css'
 
 const ListaComponent = () => {
   const [produtos, setProdutos] = useState([]);
@@ -25,10 +26,10 @@ const ListaComponent = () => {
           <Link key={produto.id} to={`/details/${produto.id}`}>
             <div className="product-card" >
               <img
-                src={produto.imagem_do_produto}
+                src='\assets\placeholder.jpeg'
                 alt={produto.nome_do_produto}
               />
-              <div>
+              <div className="product-card-data">
                 <p>
                   {produto.nome_do_produto}
                 </p>

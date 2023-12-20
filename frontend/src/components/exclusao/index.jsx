@@ -21,7 +21,7 @@ const ExclusaoComponent = () => {
     
     try {
         const produtoDeletado = await deleteProduto(id);
-        console.log("Produto deletado com sucesso:", produtoDeletado);
+        window.alert("Produto deletado com sucesso!", produtoDeletado);
         const updatedProdutos = produtos.filter((produto) => produto.id !== id);
       setProdutos(updatedProdutos);
     } catch (error) {

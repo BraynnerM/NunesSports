@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { createProduto } from "../../services/requestApi";
+import './index.css'
 
 const CadastroComponent = () => {
   const [produto, setProduto] = useState({
@@ -44,7 +45,7 @@ const CadastroComponent = () => {
   };
 
   return (
-    <div>
+    <div className="ficha-cadastro">
       <h2>Cadastro</h2>
       <form onSubmit={handleSubmit}>
         <label>

@@ -4,10 +4,10 @@
   "description": "",
   "main": "server.ts",
   "engines": {
-    "node": "18.x"
+    "node": "14.x"
   },
   "scripts": {
-    "dev": "npx ts-node src/server.ts",
+    "dev": "ts-node src/server.ts",
     "build": "prisma generate && tsc",
     "start": "node src/server.js",
     "prestart": "npm run build"

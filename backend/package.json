@@ -7,8 +7,8 @@
     "node": "18.x"
   },
   "scripts": {
-    "postinstall": "prisma generate",
-    "start": "node ./src/server.ts",
+    "prisma:generate": "npx prisma generate",
+    "start": "npm run prisma:generate && node src/server.js",
     "build": "prisma generate && tsc",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "npx tsx watch src/server.ts"

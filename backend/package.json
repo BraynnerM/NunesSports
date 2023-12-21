@@ -7,7 +7,8 @@
     "node": "18.x"
   },
   "scripts": {
-    "dev": "nodemon src/server.ts"
+    "dev": "nodemon src/server.ts",
+    "vercel-build": "npx prisma generate"
   },
   "keywords": [],
   "author": "",

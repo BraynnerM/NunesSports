@@ -8,7 +8,7 @@
   },
   "scripts": {
     "dev": "nodemon src/server.ts",
-    "vercel-build": "npx prisma generate && nodemon src/server.ts"
+    "vercel-build": "npx prisma generate && node src/server.ts"
   },
   "keywords": [],
   "author": "",

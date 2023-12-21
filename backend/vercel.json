@@ -3,11 +3,7 @@
   "builds": [
     {
       "src": "src/server.ts",
-      "use": "@vercel/node",
-      "config": {
-        "buildCommand": "npm run build",
-        "devCommand": "npm run dev"
-      }
+      "use": "@vercel/node"
     }
   ],
   "routes": [

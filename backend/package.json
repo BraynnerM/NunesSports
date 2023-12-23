@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "tsx src/server.ts",
     "build": "tsup src",
-    "start": "npx prisma generate && node dist/server.js"
+    "start": "npx prisma db push && npx prisma generate && node dist/server.js"
   },
   "keywords": [],
   "author": "",

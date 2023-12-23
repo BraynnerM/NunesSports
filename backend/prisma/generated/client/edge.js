@@ -31,11 +31,11 @@ exports.Prisma = Prisma
 exports.$Enums = {}
 
 /**
- * Prisma Client JS version: 5.7.0
+ * Prisma Client JS version: 5.7.1
  * Query Engine version: 0ca5ccbcfa6bdc81c003cf549abe4269f59c41e5
  */
 Prisma.prismaVersion = {
-  client: "5.7.0",
+  client: "5.7.1",
   engine: "0ca5ccbcfa6bdc81c003cf549abe4269f59c41e5"
 }
 
@@ -146,7 +146,7 @@ const config = {
     "schemaEnvPath": "../../../.env"
   },
   "relativePath": "../..",
-  "clientVersion": "5.7.0",
+  "clientVersion": "5.7.1",
   "engineVersion": "0ca5ccbcfa6bdc81c003cf549abe4269f59c41e5",
   "datasourceNames": [
     "db"

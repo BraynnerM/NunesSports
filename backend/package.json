@@ -9,8 +9,8 @@
   "scripts": {
     "dev": "nodemon src/server.ts",
     "build": "tsc",
-    "start": "npx prisma generate && tsc && node dist/server.js",
-    "vercel-build": "npx prisma generate && tsc && nodemon src/server.ts"
+    "start": "npx prisma generate && tsc && ts-node src/server.js",
+    "vercel-build": "npx prisma generate && tsc && ts-node src/server.ts"
   },
   "keywords": [],
   "author": "",

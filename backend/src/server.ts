@@ -8,8 +8,9 @@ import cors from 'cors';
 import { getProdutos, getProdutoById, getProdutosByNome, createProduto, updateProduto, deleteProduto } from "./controllers/produtosController"; 
 
 const corsOptions = {
-  origin: 'http://localhost:3000',
-  optionsSuccessStatus: 200,
+  origin: 'https://nunes-sports-frontend.vercel.app',
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true,
 };
 
 app.use(cors(corsOptions));

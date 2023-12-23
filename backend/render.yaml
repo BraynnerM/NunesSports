@@ -1,4 +1,4 @@
 builds:
   - name: Your App
     env: node
-    buildCommand: npm ci && npm run build && npx prisma generate
+    buildCommand: npm ci && npm run build 

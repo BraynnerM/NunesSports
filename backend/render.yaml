@@ -1,0 +1,4 @@
+builds:
+  - name: Your App
+    env: node
+    buildCommand: npm install && npx prisma generate && npm run build

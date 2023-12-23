@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'https://nunes-sports.vercel.app/api';
+const API_BASE_URL = 'https://nunes-sports.onrender.com/api';
 
 export const getProdutos = async () => {
   try {

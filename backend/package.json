@@ -1,4 +1,4 @@
-{  
+{
   "name": "teste-tecnico-every-mind",
   "version": "1.0.0",
   "description": "",
@@ -8,7 +8,9 @@
   },
   "scripts": {
     "dev": "nodemon src/server.ts",
-    "vercel-build": "npx prisma generate && tsc && NODE_ENV=production node src/server.ts"
+    "build": "tsc",
+    "start": "tsc && node dist/server.js",
+    "vercel-build": "npx prisma generate && tsc && nodemon src/server.ts"
   },
   "keywords": [],
   "author": "",

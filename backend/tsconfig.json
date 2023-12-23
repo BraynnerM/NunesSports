@@ -109,7 +109,7 @@
   },
   "include": [
     "src/**/*.ts"
-  ],
+, "src/server.ts"  ],
   "exclude": [
     "node_modules"
   ]

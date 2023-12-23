@@ -1,5 +1,5 @@
 import express from "express";
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from "../prisma/generated/client";
 const port = process.env.PORT ? Number(process.env.PORT) : 4000;
 const app = express();
 const prisma = new PrismaClient();

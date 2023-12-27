@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { getProdutos, updateProduto } from "../../services/requestApi";
-import Modal from "./Modal"; 
-import './index.css'
+import Modal from "./Modal";
+import "./index.css";
 
 const AtualizacaoComponent = () => {
   const [produtos, setProdutos] = useState([]);
@@ -21,7 +21,7 @@ const AtualizacaoComponent = () => {
     fetchData();
   }, []);
 
-  const handleModificarClick = (produto) => {
+  const handleModificarClick = produto => {
     setProdutoSelecionado(produto);
     setIsModalAberto(true);
   };
@@ -31,11 +31,20 @@ const AtualizacaoComponent = () => {
     setIsModalAberto(false);
   };
 
-  const handleUpdateProduct = async (e) => {
+  const handleUpdateProduct = async e => {
     e.preventDefault();
 
     try {
-      const produtoAtualizado = await updateProduto(produtoSelecionado.id, produtoSelecionado);
+      const produtoAtualizado = await updateProduto(
+        produtoSelecionado.id,
+        produtoSelecionado
+      );
+      setProdutos(prevProdutos =>
+        prevProdutos.map(
+          produto =>
+            produto.id === produtoSelecionado.id ? produtoAtualizado : produto
+        )
+      );
       window.alert("Produto atualizado com sucesso!", produtoAtualizado);
       handleCloseModal();
     } catch (error) {
@@ -43,18 +52,18 @@ const AtualizacaoComponent = () => {
     }
   };
 
-  const handleChange = (e) => {
+  const handleChange = e => {
     const { name, value } = e.target;
-    setProdutoSelecionado((prevProduto) => ({
+    setProdutoSelecionado(prevProduto => ({
       ...prevProduto,
       [name]: value
-    }));    
+    }));
   };
 
-  const handleBlur = (e) => {
+  const handleBlur = e => {
     const { name, value } = e.target;
     const formattedValue = parseFloat(value).toFixed(2);
-    setProdutoSelecionado((prevProduto) => ({
+    setProdutoSelecionado(prevProduto => ({
       ...prevProduto,
       [name]: formattedValue
     }));
@@ -63,30 +72,34 @@ const AtualizacaoComponent = () => {
   return (
     <div className="container-update-products">
       <div className="product-cards">
-        {produtos.map((produto) => (
+        {produtos.map(produto =>
           <div key={produto.id} className="product-card">
-            <img src='\assets\placeholder.jpeg' alt={produto.nome_do_produto} />
+            <img src="\assets\placeholder.jpeg" alt={produto.nome_do_produto} />
             <div className="product-card-data">
-              <p>{produto.nome_do_produto}</p>
-              <p>R${Number.parseFloat(produto.preco_do_produto).toFixed(2)}</p>
+              <p>
+                {produto.nome_do_produto}
+              </p>
+              <p>
+                R${Number.parseFloat(produto.preco_do_produto).toFixed(2)}
+              </p>
             </div>
-            <button onClick={() => handleModificarClick(produto)}>Modificar</button>
+            <button onClick={() => handleModificarClick(produto)}>
+              Modificar
+            </button>
           </div>
-        ))}
+        )}
       </div>
 
-      {isModalAberto && (
-        <Modal 
-          onClose={handleCloseModal} 
+      {isModalAberto &&
+        <Modal
+          onClose={handleCloseModal}
           handleUpdate={handleUpdateProduct}
           produto={produtoSelecionado}
           handleChange={handleChange}
           handleBlur={handleBlur}
-        />
-      )}
+        />}
     </div>
   );
 };
 
 export default AtualizacaoComponent;
-
